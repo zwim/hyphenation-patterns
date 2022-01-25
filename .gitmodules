@@ -1,0 +1,3 @@
+[submodule "wortliste"]
+	path = wortliste
+	url = https://repo.or.cz/wortliste.git
