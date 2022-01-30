@@ -13,6 +13,7 @@ fi
 cd wortliste
 
 git fetch
+git merge
 sleep 4
 
 #backup for git
