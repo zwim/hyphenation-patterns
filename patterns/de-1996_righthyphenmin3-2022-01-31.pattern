@@ -36,12 +36,13 @@ original Author: Nikolay Pultsin (geometer@fbreader.org)
 ------------------------------------------------------------------------------------------
 
 preamble from pat-gen by Martin.Zwicknagl@kirchbichl.net
+pattern file used: de-1996_righthyphenmin3-2022-01-31.pat
 
 % title: German Hyphenation Patterns (Reformed Orthography, 2006)
 %
 % notice: TeX-Trennmuster für die reformierte (2006) deutsche Rechtschreibung
 %
-% version: 2022-01-30
+% version: 2022-01-31
 %
 % authors:
 %   -
@@ -94,7 +95,7 @@ preamble from pat-gen by Martin.Zwicknagl@kirchbichl.net
 %
 % ===========================================================================
 
-\message{German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2022-01-30 (WL)}
+\message{German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2022-01-31 (WL)}
 
 %
 % The used patgen parameters are

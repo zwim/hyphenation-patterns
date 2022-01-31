@@ -54,6 +54,7 @@ original Author: Nikolay Pultsin (geometer@fbreader.org)
 ------------------------------------------------------------------------------------------
 
 preamble from pat-gen by Martin.Zwicknagl@kirchbichl.net
+pattern file used: $1
 
 EOF
 
