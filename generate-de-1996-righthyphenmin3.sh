@@ -87,9 +87,10 @@ cp de-1996_righthyphenmin3.pat "${PAT}"
 echo "$DATE"
 
 echo converting "$PAT" in "${PAT}"tern
-./pat2pattern.sh "$PAT" > patterns/"${PAT}"tern
+./pat2pattern.sh "$PAT" "German" de 2 3 > patterns/"${PAT}"tern
 rm German.pattern
 ln -s patterns/"${PAT}"tern German.pattern
+ln -s patterns/"${PAT}"tern hyph-de-1996.pattern
 echo
 echo "Pattern written to patterns/${PAT}tern and linked to German.pattern"
 rm "$PAT"

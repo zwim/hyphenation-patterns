@@ -1,19 +1,27 @@
 #!/bin/bash
 
 # Tool to for generating coolreader-hyphenation-patterns out of TeX .pat file
-# Date: 17. June 2014
+# These pattern file is also used for KOReader
+# Date: 17. June 2014-2023
 # Author: Martin Zwicknagl
 
 INFILE="$1"
 
-if [[ "$1" == "" ]]; then
-    echo "usage: gen-pattern.sh infile > outfile"
+if [[ "$1" == "" ]] || [[ "$2" == "" ]] || [[ "$3" == "" ]] ; then
+    echo "usage: gen-pattern.sh infile title lang > outfile"
     echo "    infile  ... output of patgen"
+    echo "    title ... language in clear form, may contain commata"
+    echo "    lang ... ISO 639-1 code of the language (e.g. de, de-AT, de-DE, en, en-UK, ja, zu)"
     echo "    outfile ... crengine pattern file"
     echo ""
     echo "This is a script to convert patgen output to a crengine readable pattern file."
     exit
 fi
+
+title="$1"
+lang="$2"
+lefthyphenmin="$3"
+righthyphenmin="$4"
 
 cat <<EOF
 <?xml version="1.0" encoding="utf8"?>
@@ -61,9 +69,11 @@ EOF
 PREAMBLE=1
 while IFS='' read -r line || [[ -n "$line" ]]; do
     if [[ ${PREAMBLE} == "1" && "${line}" == *"\patterns{"* ]]; then
-    echo "-->"
-    echo ""
-    echo "<HyphenationDescription>"
+        echo "-->"
+        echo ""
+        echo '<HyphenationDescription"'
+	echo '    title="${title}" lang="${lang}"'
+        echo '    lefthyphenmin="${righthyphenmin}" righthyphenmin="${lefthyphenmin}">'
         PREAMBLE=0
         continue
     fi
@@ -72,11 +82,12 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
         echo "${line}"
     elif [[ "${line}" =~ }.*|\\.*|%.* ]]; then
 		continue
-	else
+    else
         lnew=$(echo "${line}" | sed -e 's#\.# #g')
         echo "<pattern>${lnew}</pattern>"
     fi
 done < "${INFILE}"
 
 echo "</HyphenationDescription>"
-echo ""
+echo "" 
+
